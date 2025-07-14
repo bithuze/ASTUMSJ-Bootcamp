@@ -1,0 +1,128 @@
+body {
+    background: rgb(154, 182, 238);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-container {
+    background: #fff;
+    padding: 2rem 2.5rem 2.5rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 400px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.input-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#task-input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s;
+}
+
+#task-input:focus {
+    border-color: #4f8cff;
+}
+
+#add-task-btn {
+    padding: 0.7rem 1.2rem;
+    background: #4f8cff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#add-task-btn:hover {
+    background: #2563eb;
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 0.5rem;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-checkbox {
+    margin-right: 1rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: #4f8cff;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.task-name {
+    flex: 1;
+    font-size: 1rem;
+    color: #333;
+    word-break: break-word;
+    transition: color 0.2s;
+}
+
+.task-item.completed .task-name {
+    text-decoration: line-through;
+    color: #a0aec0;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    color: #e53e3e;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 0.7rem;
+    transition: color 0.2s;
+}
+
+.remove-btn:hover {
+    color: #b91c1c;
+}
+
+@media (max-width: 500px) {
+    .todo-container {
+        padding: 1rem;
+        max-width: 98vw;
+    }
+    .input-row {
+        flex-direction: column;
+        gap: 0.7rem;
+    }
+    #add-task-btn {
+        width: 100%;
+    }
+} 

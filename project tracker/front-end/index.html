@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECT TRACKER</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>PROJECT TRACKER</h1>
+
+  <div class="container">
+    <div class="form-section">
+      <h2>ADD NEW PROJECT</h2>
+      <form id="project-form">
+        <label for="projectName">PROJECT NAME:</label>
+        <input type="text" id="projectName" name="projectName" required>
+
+        <label for="projectDescription">DESCRIPTION:</label>
+        <textarea id="projectDescription" name="projectDescription" required></textarea>
+
+        <label for="projectStatus">STATUS:</label>
+        <select id="projectStatus" name="projectStatus">
+          <option value="ongoing">ONGOING</option>
+          <option value="completed">COMPLETED</option>
+            <option value="on-hold">ON HOLD</option>
+        </select>
+
+        <button type="submit">ADD PROJECT</button>
+      </form>
+    </div>
+
+    <div class="list-section">
+      <h2>PROJECTS</h2>
+      <div id="project-list" class="project-list">
+        </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

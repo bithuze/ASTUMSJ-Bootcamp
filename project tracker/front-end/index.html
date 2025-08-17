@@ -3,37 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PROJECT TRACKER</title>
+  <title>BOOTCAMP PROJECT TRACKER</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>PROJECT TRACKER</h1>
+  <h1>BOOTCAMP PROJECT TRACKER</h1>
 
   <div class="container">
     <div class="form-section">
-      <h2>ADD NEW PROJECT</h2>
+      <h2>ADD/UPDATE PROJECT</h2>
       <form id="project-form">
-        <label for="projectName">PROJECT NAME:</label>
+        <input type="hidden" id="projectId"> <label for="projectName">PROJECT NAME:</label>
         <input type="text" id="projectName" name="projectName" required>
 
         <label for="projectDescription">DESCRIPTION:</label>
         <textarea id="projectDescription" name="projectDescription" required></textarea>
 
-        <label for="projectStatus">STATUS:</label>
-        <select id="projectStatus" name="projectStatus">
+        <label for="projectStatus">
+          STATUS: <span style="color: red;">*</span>
+        </label>
+        <select id="projectStatus" name="projectStatus" required>
+          <option value="" disabled selected hidden>SELECT STATUS</option>
           <option value="ongoing">ONGOING</option>
           <option value="completed">COMPLETED</option>
-            <option value="on-hold">ON HOLD</option>
         </select>
-
-        <button type="submit">ADD PROJECT</button>
+  
+        <button type="submit" id="submitBtn">ADD PROJECT</button>
+  
+  
       </form>
     </div>
 
     <div class="list-section">
       <h2>PROJECTS</h2>
-      <div id="project-list" class="project-list">
+      <p id="message" class="message"></p> <div id="project-list" class="project-list">
         </div>
     </div>
   </div>

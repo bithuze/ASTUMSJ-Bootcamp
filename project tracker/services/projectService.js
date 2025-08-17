@@ -1,50 +1,32 @@
-let projects = require('../data/projects');
+// THIS SERVICE HANDLES ALL THE MONGODB DATA LOGIC.
 
-
-const getNextId = () => {
-  const maxId = projects.reduce((max, project) => (project.id > max ? project.id : max), 0);
-  return maxId + 1;
-};
+const Project = require('../models/project');
 
 // GET ALL PROJECTS
-const getAllProjects = () => {
-  return projects;
+const getAllProjects = async () => {
+  return await Project.find();
 };
 
 // GET A SINGLE PROJECT BY ID
-const getProjectById = (id) => {
-  return projects.find(project => project.id === parseInt(id));
+const getProjectById = async (id) => {
+  return await Project.findById(id);
 };
 
 // ADD A NEW PROJECT
-const createProject = (newProject) => {
-  const projectToAdd = {
-    id: getNextId(),
-    ...newProject,
-    status: newProject.status || "ongoing" // SET DEFAULT STATUS
-  };
-  projects.push(projectToAdd);
-  return projectToAdd;
+const createProject = async (newProject) => {
+  const project = new Project(newProject);
+  return await project.save();
 };
 
 // UPDATE AN EXISTING PROJECT
-const updateProject = (id, updatedProject) => {
-  const index = projects.findIndex(project => project.id === parseInt(id));
-  if (index !== -1) {
-    projects[index] = { ...projects[index], ...updatedProject };
-    return projects[index];
-  }
-  return null; 
+const updateProject = async (id, updatedProject) => {
+  return await Project.findByIdAndUpdate(id, updatedProject, { new: true });
+  // {new: true} RETURNS THE UPDATED DOCUMENT INSTEAD OF THE ORIGINAL ONE.
 };
 
 // DELETE A PROJECT
-const deleteProject = (id) => {
-  const index = projects.findIndex(project => project.id === parseInt(id));
-  if (index !== -1) {
-    const deletedProject = projects.splice(index, 1);
-    return deletedProject[0];
-  }
-  return null; 
+const deleteProject = async (id) => {
+  return await Project.findByIdAndDelete(id);
 };
 
 module.exports = {
